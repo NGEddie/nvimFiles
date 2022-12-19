@@ -32,7 +32,7 @@ keymap('n', '<leader><down>', ':resize -3<cr>', opts)
 keymap('n', '<leader>b', ':ls<cr>', opts)
 keymap('n', '<leader>bn', ':bn<cr>', opts)
 keymap('n', '<leader>bp', ':bp<cr>', opts)
-keymap('n', '<leader>bd', ':bd<cr>', opts)
+keymap('n', '<leader>bd', ':Bdelete<cr>', opts)
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -82,6 +82,9 @@ keymap('n', '<leader>tt', ':botright 10sp<cr>:term<cr>i', {})
 keymap('n', '<leader>tv', ':botright 50vsp<cr>:term<cr>i', {})
 keymap('n', '<leader>tt', ':rightbelow sp<cr>:term<cr>i', {})
 keymap('n', '<leader>tt', ':vert sp<cr>:term<cr>i', {})
+
+-- Format File
+keymap('n', '<leader>F', ':Format<cr>', opts)
 
 -- NVIM-R Bindings
 keymap('n', '<leader>r<space>', ':call StartR("default")<cr><C-W><C-l><C-W>T', opts) -- Start R

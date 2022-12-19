@@ -23,7 +23,7 @@ opt.breakindent = true
 
 -- Save undo history
 opt.undofile = true
-opt.undodir = '~/.config/nvim/undodir'
+opt.undodir = '/Users/Nigel/.config/nvim/undodir'
 opt.swapfile = false
 opt.backup = false
 opt.writebackup = false
