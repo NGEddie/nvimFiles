@@ -1,13 +1,3 @@
--- require 'lspconfig'.sumneko_lua.setup {
---   settings = {
---     Lua = {
---       diagnostics = {
---         -- Get the language server to recognize the `vim` global
---         globals = { 'vim' },
---       },
---     },
---   },
--- }
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -49,22 +39,28 @@ local on_attach = function(_, bufnr)
 
   -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    if vim.lsp.buf.format then
+
+    if vim.bo.filetype == 'python' then
+      vim.api.nvim_command('FormatWrite')
+    elseif vim.lsp.buf.format then
       vim.lsp.buf.format()
     elseif vim.lsp.buf.formatting then
       vim.lsp.buf.formatting()
     end
   end, { desc = 'Format current buffer with LSP' })
 
+  -- if server.name == 'pyright' then
+  --   server.resolved_capabilities.document_formatting = false
+  -- end
 end
-
 
 -- Setup mason so it can manage external tooling
 require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua', 'r_language_server' }
+local servers = { 'clangd', 'tsserver',
+  'sumneko_lua', 'r_language_server', 'html' }
 
 
 -- Ensure the servers above are installed
@@ -82,6 +78,12 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+require('lspconfig').pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  documentFormatingProvider = false
+}
 
 -- Turn on lsp status information
 require('fidget').setup()
@@ -113,4 +115,3 @@ require('lspconfig').sumneko_lua.setup {
     },
   },
 }
-

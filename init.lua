@@ -17,11 +17,12 @@ require('commentConfig')
 require('gitsignsConfig')
 require('telescopeConfig')
 require('treesitterConfig')
-require('lspPluginConfig')
 require('completionConfig')
+require('lspPluginConfig')
 require('autopairsConfig')
 require('bufferlineConfig')
 require('debuggerConfig')
+require('formatterConfig')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

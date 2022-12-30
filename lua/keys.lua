@@ -3,7 +3,7 @@
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = '\\'
 
 --[[ keys.lua ]]
 local opts = { noremap = true, silent = true }
@@ -32,7 +32,7 @@ keymap('n', '<leader><down>', ':resize -3<cr>', opts)
 keymap('n', '<leader>b', ':ls<cr>', opts)
 keymap('n', '<leader>bn', ':bn<cr>', opts)
 keymap('n', '<leader>bp', ':bp<cr>', opts)
-keymap('n', '<leader>bd', ':Bdelete<cr>', opts)
+keymap('n', '<leader>bd', ':Bdelete<cr>', { silent = true })
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -87,13 +87,16 @@ keymap('n', '<leader>tt', ':vert sp<cr>:term<cr>i', {})
 keymap('n', '<leader>F', ':Format<cr>', opts)
 
 -- NVIM-R Bindings
-keymap('n', '<leader>r<space>', ':call StartR("default")<cr><C-W><C-l><C-W>T', opts) -- Start R
+keymap('n', '<leader>r<space>', ':call StartR("default")<cr>:vertical resize -30<cr>', opts) -- Start R as a V split
+-- keymap('n', '<leader>r<space>', ':call StartR("default")<cr><C-W><C-l><C-W>T', opts) -- Start R as a new tab
 keymap('n', '<leader>rq', ':call RQuit("nosave")<cr>', opts) -- Close R
 keymap('n', '<leader>rp', ':call RAction("print")<cr>', opts) -- Print what ever is under cursor
 keymap('n', '<leader>rsf', ':call SendFileToR("silent")<cr>', opts) -- Send file to R
 keymap('n', '<leader>rsl', ':call SendLineToR("down")<cr>', opts) -- Send line to R and move down
 keymap('n', '<leader>rdf', ':call RAction("viewobj", ", howto=\'split\'")<cr>', opts)
 keymap('n', '<leader>ro', ':call RObjBrowser()<cr>', opts)
+keymap('n', '<leader>rv', ':call RAction("viewobj",)')
+-- nnoremap <silent> <leader>rdf :call RAction("viewobj", ", howto='split'")<cr>
 -- nnoremap <silent> <leader>ro :call RObjBrowser()<cr>
 -- nnoremap <silent> <leader>rq :call RQuit('nosave')<cr> -- Close R
 -- nnoremap <silent> <leader>rr :call b:SendChunkToR("silent", "stay")<cr> -- Send Chunk to R

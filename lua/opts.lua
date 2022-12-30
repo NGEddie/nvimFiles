@@ -45,7 +45,7 @@ vim.g.background = 'dark'
 require('colourscheme')
 
 -- Set completeopt to have a better completion experience
-opt.completeopt = 'menuone,noselect'
+opt.completeopt = 'menu,menuone,noselect'
 
 -- [[ Filetypes ]]
 opt.encoding = 'utf8' -- str:  String encoding to use

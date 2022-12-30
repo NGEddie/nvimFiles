@@ -21,7 +21,8 @@ keymap('n', '<leader>db', "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
 keymap('n', '<leader>dB', "<cmd>lua require'dap'.toggle_breakpoint(vim.fn.input('Breakpoint Condition: '))<cr>", opts)
 keymap('n', '<leader>dk', "<cmd>lua require'dapui'.eval()<cr>", opts)
 
-vim.fn.sign_define('DapBreakpoint', { text = '', texthl = '', linehl = '', numhl = '' })
+-- vim.fn.sign_define('DapBreakpoint', { text = '', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
 
 dap.adapters.python = {
   type = 'executable',

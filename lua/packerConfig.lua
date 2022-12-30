@@ -22,12 +22,21 @@ require('packer').startup(function(use)
     },
   }
 
-  use { -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip'
-    },
-  }
+  use({ 'hrsh7th/nvim-cmp' }) -- The completion plugin
+  use({ 'hrsh7th/cmp-buffer' }) -- buffer completions
+  use({ 'hrsh7th/cmp-path' }) -- path completions
+  use({ 'hrsh7th/cmp-cmdline' }) -- cmdline completions
+  use({ 'hrsh7th/cmp-nvim-lsp' }) -- lsp completions
+  use({ 'hrsh7th/cmp-nvim-lua' }) -- lsp completions
+  use({ 'saadparwaiz1/cmp_luasnip' }) -- snippet completions
+  -- use({ 'quangnguyen30192/cmp-nvim-ultisnips' })
+  -- use({ 'SirVer/ultisnips' })
+
+  use { 'mhartington/formatter.nvim' }
+
+  -- snippets
+  use({ 'L3MON4D3/LuaSnip' }) --snippet engine
+  use({ 'rafamadriz/friendly-snippets' }) -- a bunch of snippets to use
 
   use { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -69,22 +78,22 @@ require('packer').startup(function(use)
   use({ 'tpope/vim-surround' })
 
   -- Bufferline (Buffer headers)
-    use({ 'akinsho/bufferline.nvim' })
-    use({ 'moll/vim-bbye' })
+  use({ 'akinsho/bufferline.nvim' })
+  use({ 'moll/vim-bbye' })
 
-    -- Toggleterm (Toggles Terminal)
-    use({ 'akinsho/toggleterm.nvim' })
+  -- Toggleterm (Toggles Terminal)
+  use({ 'akinsho/toggleterm.nvim' })
 
-    -- Startify
-    use({ 'mhinz/vim-startify' })
+  -- Startify
+  use({ 'mhinz/vim-startify' })
 
-   -- Rainbow CSV (colourise CSV)
-    use({ 'mechatroner/rainbow_csv' })
+  -- Rainbow CSV (colourise CSV)
+  use({ 'mechatroner/rainbow_csv' })
 
-    -- Debugging
-    use({ 'mfussenegger/nvim-dap' }) -- DAP Debugger
-    use({ 'rcarriga/nvim-dap-ui' }) -- Debugger UI
-    use({ 'mfussenegger/nvim-dap-python' }) -- Python Debugging
+  -- Debugging
+  use({ 'mfussenegger/nvim-dap' }) -- DAP Debugger
+  use({ 'rcarriga/nvim-dap-ui' }) -- Debugger UI
+  use({ 'mfussenegger/nvim-dap-python' }) -- Python Debugging
 end)
 
 -- Automatically source and re-compile packer whenever you save this file
